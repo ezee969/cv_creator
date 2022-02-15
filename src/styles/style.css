@@ -4,20 +4,290 @@ body{
     margin: 0px
 }
 
+p{
+    margin: 0px;
+} 
+
+/* -----------------------------page----------------------------- */
+.page-cont{ 
+    width: 98.4vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* -----------------------------header----------------------------- */
 .header-cont{
     display: flex;
-    /* justify-content: center; */
     align-items: center;
-    
-    height: 135px;
+    height: 11.5vh;
     background-color: #001247;
-    box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
-    font-size: 37px;
+    width: 100vw;
+    font-size: 31px;
 }
 
 #h-text{
-    margin-left: 190px;
+    margin-left: 140px;
+    margin-bottom: 55px;
     color: #fff;
     font-weight: bolder;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* -----------------------------main----------------------------- */
+.main-cont{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    background-color: #bfcfff;
+    box-shadow: 0px 0px 10px #000;
+    gap: 75px;
+    padding: 40px 0px 40px 0px;
+}
+
+.menu-cont,.overview-cont{
+    display: flex;
+    width: 41vw;
+    background-color: rgb(245, 245, 245);
+    border-radius: 3px;
+    box-shadow: 0px 5px 15px 3px #809fff;
+    flex-direction: column;
+}
+
+/* ------------menu------------- */
+.menu-cont{
+    display: flex;
+    height: 160vh;
+    padding: 0px 25px 25px 25px;
+    box-sizing: border-box;
+    font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow: auto;
+    gap:10px
+}
+
+.menu-info-cont{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.skill-info-cont{
+    display: flex;
+    gap: 15px;
+}
+
+.menu-title{
+    font-size: 19px;
+    font-weight: bolder;
+    color: #001247;
+    margin-top: 25px;
+}
+
+input{
+    height: 31px;
+    border-radius: 4px;
+    border: none;
+    font-size: 14px;
+    padding-left: 5px;
+    color: #001247;
+    font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+input:focus, #description-input:focus{
+    outline: 1.7px solid #828eb1;
+}
+
+#sumary-input{
+    border: none;
+    resize: none;
+    border-radius: 4px;
+    padding: 6px;
+    font-size: 14px;
+    font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+button{
+    border: none;
+    border-radius: 4px;
+    background-color: #809fff;
+    color: #fff;    
+    font-size: 16px;
+    font-weight: bolder;
+    padding: 8px;
+    cursor: pointer;
+    font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    transition: 0.1s;
+}
+
+button:hover{
+    background-color: #4e7aff;
+}
+
+button:active{
+    background-color: #3d6cf8;
+}
+
+.generate-pdf-btn{
+    margin-top: 80px;
+    background-color: rgb(102, 197, 102);
+}
+
+.generate-pdf-btn:hover{
+    background-color: rgb(77, 184, 77);
+}
+
+.generate-pdf-btn:active{
+    background-color: rgb(3, 195, 3);
+}
+
+.reset-btn{
+    background-color: rgb(184, 91, 91);
+}
+
+.reset-btn:hover{
+    background-color: rgb(202, 73, 73);
+}
+
+.reset-btn:active{
+    background-color: rgb(195, 0, 0);
+}
+
+
+/* ----------overview---------- */
+.overview-cont{
+    height: 120vh;
+    position: sticky;
+    top: 17px;
+    display: flex;
+    gap: 0px;
+    font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#overview-header{
+    display: flex;
+    height: 12%;
+    background-color: #000066;
+    width: 100%;
+    font-size: 25px;
+    font-weight: bolder;
+    color: #fff;
+    font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    flex-direction: column;
+    gap: 15px;
+    padding: 30px 10px 5px 25px;
+    box-sizing: border-box;
+    
+}
+
+#overview-name-text{
+    font-size: 41px;
+
+}
+
+#overview-title-text{
+    font-weight: lighter;
+    font-size: 25px;
+}
+
+#overview-main{
+    display: flex;
+    height: 88%;
+}
+
+.overview-title{
+    font-size: 19px;
+    font-weight: bolder;
+    color: #001247;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    border-bottom: solid rgb(197, 197, 197) 1px;
+}
+
+#overview-main-info{
+    background-color: rgb(245, 245, 245);
+    width: 72%;
+    padding: 5px 20px 20px 20px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    word-wrap: break-word;
+}
+
+#sumary-txt{
+    font-style: italic;
+    line-height: 25px;
+}
+
+.skills-cont{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.experience-cont, .education-cont{
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.year-cont{
+    font-weight: bolder;
+}
+
+li span {
+    position: relative;
+    right: 10px;
+  }
+
+.experience-list {
+    margin: 0px;
+    list-style-type: none;
+}
+
+#position-list{
+    margin-bottom: 8px;
+    font-weight: bolder;
+}
+
+#overview-column-info{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 20px;
+    background-color: rgb(231, 231, 231);
+    width: 28%;
+    box-sizing: border-box;
+}
+
+.important-info-txt{
+    font-weight: bolder;
+    font-size: 15px;
+    margin: 15px 0px 0px 0px;
+}
+
+.info-txt{
+    font-size: 14px;
+}
+
+/* -----------------------------footer----------------------------- */
+.footer-cont{
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 100vw;
+    background-color: #001247;
+    height: 4.5vh;
+}
+
+#footer-img{
+    height: 22px;
+    width: 22px;
+    margin-left: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#footer-img:hover{
+    transform: scale(1.1);
 }
