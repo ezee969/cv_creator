@@ -12,22 +12,11 @@ export default function Menu(props) {
 
             {/* Personal information section */}
             <Title text="Personal Information" />
-            <PersonalInformation    handleFirstNameChange = {props.handleFirstNameChange}
-                                    handleLastNameChange = {props.handleLastNameChange}
-                                    handleTitleChange = {props.handleTitleChange}
-                                    handleAdressChange = {props.handleAdressChange}
-                                    handlePhoneNumberChange = {props.handlePhoneNumberChange}
-                                    handleEmailChange = {props.handleEmailChange}
-                                    handleSumaryChange = {props.handleSumaryChange}
-            />
+            <PersonalInformation/>
 
             {/* Skills section */}
             <Title text="Skills" />
-            <SkillMenu  handleDelBut={props.handleDeleteSkillButton} 
-                        skills={props.skillsArray}
-                        onChange={props.handleSkillChange}
-                        id={props.skillId} 
-            />
+            <SkillMenu/>
             <Button onClick={props.handleAddSkillButton} name="delete-add-btn" text="Add" />
 
             {/* Experience section */}

@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import Overview from "./menu-overview/overview/overview"
 import uniqid from "uniqid";
 
+export const MyContext = React.createContext();
 
 export default function Main() {
+
 
     //States.
     const [firstName,setFirstName] = useState("");
@@ -108,7 +110,7 @@ export default function Main() {
 
     const handleDeleteExperienceButton = (event) => {
         const experienceId = event.target.parentElement.id
-        setExperiences( currentSkills => currentSkills.filter( skill => skill.id !== experienceId))
+        setExperiences( currentExperiences => currentExperiences.filter( experience => experience.id !== experienceId))
     }
 
     const handleAddExperienceButton = () => {
@@ -165,20 +167,21 @@ export default function Main() {
 
 
     return (
-
+        <MyContext.Provider value={{handleFirstNameInputChange,
+                                    handleLastNameInputChange,
+                                    handleTitleInputChange,
+                                    handleAdressInputChange,
+                                    handlePhoneNumberInputChange,
+                                    handleEmailInputChange,
+                                    handleSumaryInputChange,
+                                    skills,
+                                    handleSkillInputChange,
+                                    handleDeleteSkillButton
+                                    }}>
         <div className="main-cont">
             
-            <Menu   handleFirstNameChange = {handleFirstNameInputChange} 
-                    handleLastNameChange = {handleLastNameInputChange} 
-                    handleTitleChange = {handleTitleInputChange} 
-                    handleAdressChange = {handleAdressInputChange}
-                    handlePhoneNumberChange = {handlePhoneNumberInputChange}
-                    handleEmailChange = {handleEmailInputChange}
-                    handleSumaryChange = {handleSumaryInputChange}
-                    skillsArray = {skills}
-                    handleSkillChange = {handleSkillInputChange}
+            <Menu   
                     handleAddSkillButton = {handleAddSkillButton}
-                    handleDeleteSkillButton = {handleDeleteSkillButton}
                     experiencesArray = {experiences}
                     handleAddExperienceButton = {handleAddExperienceButton}
                     handlePositionChange = {handlePositionInputChange}
@@ -187,7 +190,7 @@ export default function Main() {
                     handleFromChange = {handleFromInputChange}
                     handleToChange = {handleToInputChange}
                     handleDeleteExperienceButton = {handleDeleteExperienceButton}
-                    setExperiences = {"hola"}
+                    setExperiences = {setExperiences}
             />
             
             <Overview   firstName = {firstName} 
@@ -201,6 +204,6 @@ export default function Main() {
                          />
 
         </div>
-
+        </MyContext.Provider>
     )
 }

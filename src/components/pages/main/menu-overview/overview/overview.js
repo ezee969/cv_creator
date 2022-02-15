@@ -26,8 +26,8 @@ export default function Overview(props) {
 
                     <OverviewTitle text="Education" />
                     <EducationTxt firstEducationYear="2005" secondEducationYear="2011" universityName="UNRC" educationCity="Texas" degree="Computer science"/>
-                    <EducationTxt firstEducationYear="2005" secondEducationYear="2011" universityName="UNRC" educationCity="Texas" degree="Computer science"/>
-                    <EducationTxt firstEducationYear="2005" secondEducationYear="2011" universityName="UNRC" educationCity="Texas" degree="Computer science"/>
+                    <EducationTxt firstEducationYear="2005" secondEducationYear="2011" universityName="UNRC" educationCity="Texas" degree="Computer sciencei"/>
+                    <EducationTxt firstEducationYear="2005" secondEducationYear="2011" universityName="UNRC" educationCity="Texas" degree="Computer sciencei"/>
 
                 </div>
                 <div id="overview-column-info">
