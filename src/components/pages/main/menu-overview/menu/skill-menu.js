@@ -6,8 +6,9 @@ import { MyContext } from "../../main"
 export default function SkillMenu() {
 
     const { skills,
-            handleSkillInputChange,
-            handleDeleteSkillButton } = useContext(MyContext)
+            handleGroupInputChange,
+            handleDeleteButton,
+            setSkills} = useContext(MyContext)
 
     return(
         <div className="skills-cont">
@@ -15,12 +16,15 @@ export default function SkillMenu() {
             {skills.map( (skill) => {
                 
                 return <div id={skill.id} key={skill.id} className="skill-info-cont">
-                            <Input  handleChangeFunction={handleSkillInputChange} 
+                            <Input  handleChangeFunction={e => handleGroupInputChange(e,skills,setSkills,"text")} 
                                     name="skill-input"
                                     maxlength="20" 
                                     placeholder="Skill"
-                            />
-                            <Button onClick={handleDeleteSkillButton} name="delete-add-btn" text="Delete" />
+                                    />
+                            <Button onClick={e => handleDeleteButton(setSkills,e)}
+                                    name="delete-add-btn" 
+                                    text="Delete" 
+                                    />
                         </div>
             })}
 

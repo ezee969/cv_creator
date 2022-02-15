@@ -21,21 +21,13 @@ export default function Menu(props) {
 
             {/* Experience section */}
             <Title text="Experience" />
-            <ExperienceInformationMenu  experiences = {props.experiencesArray}
-                                        onChangePosition = {props.handlePositionChange}
-                                        onChangeCompany = {props.handleCompanyChange}
-                                        onChangeCity = {props.handleCityChange} 
-                                        onChangeFrom = {props.handleFromChange} 
-                                        onChangeTo = {props.handleToChange} 
-                                        handleDelBut = {props.handleDeleteExperienceButton}
-                                        setExperiences = {props.setExperiences} 
-            />
+            <ExperienceInformationMenu />
             <Button onClick={props.handleAddExperienceButton} name="delete-add-btn" text="Add" />
 
             {/* Education section */}
             <Title text="Education" />
             <EducationInformationMenu />
-            <Button name="delete-add-btn" text="Add" />
+            <Button onClick={props.handleAddEducationButton} name="delete-add-btn" text="Add" />
 
             <Button name="generate-pdf-btn" text="Generate PDF" />
 

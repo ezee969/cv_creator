@@ -22,97 +22,33 @@ export default function Main() {
 
 
     //----------Input change handle functions.----------
+    const handleDeleteButton = (stateSetter,event) => {
+        const divId = event.target.parentElement.id
+        stateSetter( currentState => currentState.filter( obj => obj.id !== divId))
+    }
+
+    const handleGroupInputChange = (event,array,stateSeter,key) => {
+        const divId = event.target.parentElement.id
+        const obj = array.find( experience => experience.id === divId )
+        const objIndex = array.findIndex( experience => experience.id === divId)
+        obj[key] = event.target.value
+        stateSeter( currentObjs => currentObjs.filter( obj => obj.id !== divId))
+        stateSeter( currentObjs => arrayInsert(currentObjs, objIndex, obj))
+        console.log(array)
+    }
+
     //Personal information handle functions.
-    const handleFirstNameInputChange = () => {
-        const firstNameInput = document.querySelector("#first-name-input")
-        setFirstName(firstNameInput.value)
-    }
-
-    const handleLastNameInputChange = () => {
-        const lastNameInput = document.querySelector("#last-name-input")
-        setLastName(lastNameInput.value)
-    }
-
-    const handleTitleInputChange = () => {
-        const titleInput = document.querySelector("#title-input")
-        setTitle(titleInput.value)
-    }
-
-    const handleAdressInputChange = () => {
-        const adressInput = document.querySelector("#adress-input")
-        setAdress(adressInput.value)
-    }
-
-    const handlePhoneNumberInputChange = () => {
-        const phoneNumberInput = document.querySelector("#phone-input")
-        setPhoneNumber(phoneNumberInput.value)
-    }
-
-    const handleEmailInputChange = () => {
-        const emailInput = document.querySelector("#email-input")
-        setEmail(emailInput.value)
-    }
-
-    const handleSumaryInputChange = () => {
-        const sumaryInput = document.querySelector("#sumary-input")
-        setSumary(sumaryInput.value)
+    const handleInputChange = (divId,stateSeter) => {
+        const getInput = document.querySelector(divId)
+        stateSeter(getInput.value)
     }
 
     //Skills handle functions.
-    const handleSkillInputChange = (event) => {
-        const skillId = event.target.parentElement.id
-        const skillObj = skills.find( skill => skill.id === skillId )
-        const skillObjIndex = skills.findIndex( skill => skill.id === skillId)
-        skillObj.text = event.target.value
-        setSkills( currentSkills => currentSkills.filter( skill => skill.id !== skillId))
-        setSkills( currentSkills => arrayInsert(currentSkills, skillObjIndex, skillObj))
-    }
-
-    const handleDeleteSkillButton = (event) => {
-        const skillId = event.target.parentElement.id
-        setSkills( currentSkills => currentSkills.filter( skill => skill.id !== skillId))
-    }
-
     const handleAddSkillButton = () => {
         setSkills(currentSkills => currentSkills.concat({text:"",id:uniqid()}))
     }
     
     //Experience handle functions.
-    const handlePositionInputChange = (event) => {
-        const experienceId = event.target.parentElement.id
-        const experienceObj = experiences.find( experience => experience.id === experienceId )
-        const experienceObjIndex = experiences.findIndex( experience => experience.id === experienceId)
-        experienceObj.position = event.target.value
-        setExperiences( currentExperiences => currentExperiences.filter( experience => experience.id !== experienceId))
-        setExperiences( currentExperiences => arrayInsert(currentExperiences, experienceObjIndex, experienceObj))
-    }
-
-    const handleCompanyInputChange = (event) => {
-        // const experienceId = event.target.parentElement.id
-        // const experienceObj = experiences.find( experience => experience.id === experienceId )
-        // const experienceObjIndex = experiences.findIndex( experience => experience.id === experienceId)
-        // experienceObj.company = event.target.value
-        // setExperiences( currentExperiences => currentExperiences.filter( experience => experience.id !== experienceId))
-        // setExperiences( currentExperiences => arrayInsert(currentExperiences, experienceObjIndex, experienceObj))
-    }
-
-    const handleCityInputChange = (event) => {
-        
-    }
-
-    const handleFromInputChange = (event) => {
-        
-    }
-
-    const handleToInputChange = (event) => {
-        
-    }
-
-    const handleDeleteExperienceButton = (event) => {
-        const experienceId = event.target.parentElement.id
-        setExperiences( currentExperiences => currentExperiences.filter( experience => experience.id !== experienceId))
-    }
-
     const handleAddExperienceButton = () => {
         setExperiences(currentExperiences => currentExperiences.concat({position:"",
                                                                         company:"",
@@ -125,30 +61,6 @@ export default function Main() {
     }
 
     //Education handle functions.
-    const handleUniversityInputChange = (event) => {
-
-    }
-
-    const handleStudyCityInputChange = (event) => {
-        
-    }
-
-    const handleDegreeInputChange = (event) => {
-        
-    }
-
-    const handleFromEducationInputChange = (event) => {
-        
-    }
-
-    const handleToEducationInputChange = (event) => {
-        
-    }
-
-    const handleDeleteEducationButton = (event) => {
-
-    }
-
     const handleAddEducationButton = () => {
         setEducations(currentEducations => currentEducations.concat({name:"",
                                                                     city:"",
@@ -167,43 +79,46 @@ export default function Main() {
 
 
     return (
-        <MyContext.Provider value={{handleFirstNameInputChange,
-                                    handleLastNameInputChange,
-                                    handleTitleInputChange,
-                                    handleAdressInputChange,
-                                    handlePhoneNumberInputChange,
-                                    handleEmailInputChange,
-                                    handleSumaryInputChange,
-                                    skills,
-                                    handleSkillInputChange,
-                                    handleDeleteSkillButton
-                                    }}>
+        
         <div className="main-cont">
-            
-            <Menu   
-                    handleAddSkillButton = {handleAddSkillButton}
-                    experiencesArray = {experiences}
+                                        
+            <MyContext.Provider value={{handleInputChange,
+                                        handleGroupInputChange,
+                                        handleDeleteButton,
+                                        setLastName,
+                                        setTitle,
+                                        setAdress,
+                                        setPhoneNumber,
+                                        setEmail,
+                                        setSumary,
+                                        setFirstName,
+                                        skills,
+                                        setSkills,
+                                        experiences,
+                                        setExperiences,
+                                        educations,
+                                        setEducations
+                                    }}>
+            <Menu   handleAddSkillButton = {handleAddSkillButton}
                     handleAddExperienceButton = {handleAddExperienceButton}
-                    handlePositionChange = {handlePositionInputChange}
-                    handleCompanyChange = {handleCompanyInputChange}
-                    handleCityChange = {handleCityInputChange}
-                    handleFromChange = {handleFromInputChange}
-                    handleToChange = {handleToInputChange}
-                    handleDeleteExperienceButton = {handleDeleteExperienceButton}
-                    setExperiences = {setExperiences}
-            />
-            
+                    handleAddEducationButton = {handleAddEducationButton}
+                    />
+            </MyContext.Provider>
+
+            <MyContext.Provider value={{skills,
+                                        experiences,
+                                        educations,
+                                        sumary
+                                        }}>                       
             <Overview   firstName = {firstName} 
                         lastName = {lastName}
                         title = {title}
                         adress = {adress}
                         phoneNumber = {phoneNumber}
                         email = {email}
-                        sumary = {sumary}
-                        skills = {skills}
                          />
+            </MyContext.Provider>
 
         </div>
-        </MyContext.Provider>
     )
 }
