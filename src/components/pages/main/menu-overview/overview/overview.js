@@ -8,14 +8,14 @@ export default function Overview(props) {
     return(
         <div className="overview-cont">
             <div id="overview-header">
-                <p id="overview-name-text">{props.firstName} {props.lastName}</p>
-                <p id="overview-title-text">{props.title}</p>
+                <p id="overview-name-text">{props.personalInfo.firstName} {props.personalInfo.lastName}</p>
+                <p id="overview-title-text">{props.personalInfo.title}</p>
             </div>
             <div id="overview-main">
                 <div id="overview-main-info">
 
                     <OverviewTitle text="Sumary" />
-                    <SumaryTxt />
+                    <SumaryTxt txt={props.personalInfo.sumary} />
                     
                     <OverviewTitle text="Skills" />
                     <SkillsOv />
@@ -31,14 +31,14 @@ export default function Overview(props) {
                     <OverviewTitle text="Personal Details" />
 
                     <p className="important-info-txt">Adress</p>
-                    <p className="info-txt">{props.adress}</p>
+                    <p className="info-txt">{props.personalInfo.adress}</p>
 
 
                     <p className="important-info-txt">Phone Number</p>
-                    <p className="info-txt">{props.phoneNumber}</p>
+                    <p className="info-txt">{props.personalInfo.phoneNumber}</p>
 
                     <p className="important-info-txt">Email</p>
-                    <p className="info-txt">{props.email}</p>
+                    <p className="info-txt">{props.personalInfo.email}</p>
                     
                 </div>
             </div>

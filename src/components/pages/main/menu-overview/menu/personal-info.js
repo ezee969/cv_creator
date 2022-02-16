@@ -7,24 +7,47 @@ import { MyContext } from "../../main"
 
 export default function PersonalInformationMenu(){
 
-    const { handleInputChange,
-            setLastName,
-            setTitle,
-            setAdress,
-            setPhoneNumber,
-            setEmail,
-            setSumary,
-            setFirstName } = useContext(MyContext)
+    const { handlePersonalInfoChange } = useContext(MyContext)
 
     return(
-        <div className="menu-info-cont">
-            <Input handleChangeFunction={() => handleInputChange("#first-name-input",setFirstName)} name="first-name-input" maxlength="11" placeholder="First name" />
-            <Input handleChangeFunction={() => handleInputChange("#last-name-input",setLastName)} name="last-name-input" maxlength="11" placeholder="Last name" />
-            <Input handleChangeFunction={() => handleInputChange("#title-input",setTitle)} name="title-input" maxlength="37" placeholder="Title" />
-            <Input handleChangeFunction={() => handleInputChange("#adress-input",setAdress)} name="adress-input" maxlength="23" placeholder="Adress" />
-            <Input handleChangeFunction={() => handleInputChange("#phone-input",setPhoneNumber)} name="phone-input" maxlength="23" placeholder="Phone number" />
-            <Input handleChangeFunction={() => handleInputChange("#email-input",setEmail)} name="email-input" maxlength="23" placeholder="Email" />
-            <TextArea handleChangeFunction={() => handleInputChange("#sumary-input",setSumary)} name="sumary-input" placeholder="Sumary"/>
+        
+        <div className="menu-info-cont" id="oOo">
+
+            <Input  handleChangeFunction={(e) => handlePersonalInfoChange(e,"firstName")} 
+                    maxlength="11" 
+                    placeholder="First name"
+                    className="information-input" 
+                    />
+            <Input  handleChangeFunction={(e) => handlePersonalInfoChange(e,"lastName")} 
+                    maxlength="11"
+                    placeholder="Last name" 
+                    className="information-input" 
+                    />
+            <Input  handleChangeFunction={(e) => handlePersonalInfoChange(e,"title")} 
+                    maxlength="37"
+                    className="information-input" 
+                    placeholder="Title" 
+                    />
+            <Input  handleChangeFunction={(e) => handlePersonalInfoChange(e,"adress")}
+                    className="information-input" 
+                    maxlength="23"
+                    placeholder="Adress" 
+                    />
+            <Input  handleChangeFunction={(e) => handlePersonalInfoChange(e,"phoneNumber")} 
+                    className="information-input" 
+                    maxlength="23"
+                    placeholder="Phone number" 
+                    />
+            <Input  handleChangeFunction={(e) => handlePersonalInfoChange(e,"email")} 
+                    className="information-input" 
+                    maxlength="23"
+                    placeholder="Email" 
+                    />
+            <TextArea   handleChangeFunction={(e) => handlePersonalInfoChange(e,"sumary")}
+                        className="information-input" 
+                        name="sumary-input"
+                        placeholder="Sumary"
+                        />
         </div>
     )
 }

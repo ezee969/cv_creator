@@ -31,7 +31,7 @@ export default function Menu(props) {
 
             <Button name="generate-pdf-btn" text="Generate PDF" />
 
-            <Button name="reset-btn" text="Reset" />
+            <Button onClick={props.handleResetButton} name="reset-btn" text="Reset" />
             
         </div>
     )

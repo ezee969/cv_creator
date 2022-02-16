@@ -9,24 +9,25 @@ export default function Main() {
 
 
     //States.
-    const [firstName,setFirstName] = useState("");
-    const [lastName,setLastName] = useState("");
-    const [title,setTitle] = useState("");
-    const [adress,setAdress] = useState("");
-    const [phoneNumber,setPhoneNumber] = useState("");
-    const [email,setEmail] = useState("");
-    const [sumary,setSumary] = useState("");
+    const [personalInfo,setPersonalInfo] = useState([{   firstName:"",
+                                                        lastName:"",
+                                                        title:"",
+                                                        adress:"",
+                                                        phoneNumber:"",
+                                                        email:"",
+                                                        sumary:""   }])
     const [skills,setSkills] = useState([]);
     const [experiences,setExperiences] = useState([]);
     const [educations,setEducations] = useState([]);
 
 
-    //----------Input change handle functions.----------
+    //----------Delete handle function.----------
     const handleDeleteButton = (stateSetter,event) => {
         const divId = event.target.parentElement.id
         stateSetter( currentState => currentState.filter( obj => obj.id !== divId))
     }
 
+    //----------Input handle function.----------
     const handleGroupInputChange = (event,array,stateSeter,key) => {
         const divId = event.target.parentElement.id
         const obj = array.find( experience => experience.id === divId )
@@ -34,13 +35,20 @@ export default function Main() {
         obj[key] = event.target.value
         stateSeter( currentObjs => currentObjs.filter( obj => obj.id !== divId))
         stateSeter( currentObjs => arrayInsert(currentObjs, objIndex, obj))
-        console.log(array)
     }
 
-    //Personal information handle functions.
-    const handleInputChange = (divId,stateSeter) => {
-        const getInput = document.querySelector(divId)
-        stateSeter(getInput.value)
+    //----------Reset handle function.----------
+    const handleResetButton = () => {
+        document.querySelectorAll(".information-input").forEach( inputElement => inputElement.value="")
+        setPersonalInfo([])
+        setSkills([])
+        setExperiences([])
+        setEducations([])
+    }
+
+    //Personal information input handle functions.
+    const handlePersonalInfoChange = (e,prop) => {
+        setPersonalInfo({...personalInfo, [prop] : e.target.value})
     }
 
     //Skills handle functions.
@@ -77,46 +85,34 @@ export default function Main() {
         ...arr.slice(index)
       ];
 
-
     return (
         
         <div className="main-cont">
                                         
-            <MyContext.Provider value={{handleInputChange,
-                                        handleGroupInputChange,
+            <MyContext.Provider value={{handleGroupInputChange,
                                         handleDeleteButton,
-                                        setLastName,
-                                        setTitle,
-                                        setAdress,
-                                        setPhoneNumber,
-                                        setEmail,
-                                        setSumary,
-                                        setFirstName,
                                         skills,
                                         setSkills,
                                         experiences,
                                         setExperiences,
                                         educations,
-                                        setEducations
+                                        setEducations,
+                                        personalInfo,
+                                        setPersonalInfo,
+                                        handlePersonalInfoChange
                                     }}>
             <Menu   handleAddSkillButton = {handleAddSkillButton}
                     handleAddExperienceButton = {handleAddExperienceButton}
                     handleAddEducationButton = {handleAddEducationButton}
+                    handleResetButton = {handleResetButton}
                     />
             </MyContext.Provider>
 
             <MyContext.Provider value={{skills,
                                         experiences,
                                         educations,
-                                        sumary
                                         }}>                       
-            <Overview   firstName = {firstName} 
-                        lastName = {lastName}
-                        title = {title}
-                        adress = {adress}
-                        phoneNumber = {phoneNumber}
-                        email = {email}
-                         />
+            <Overview personalInfo = {personalInfo} />
             </MyContext.Provider>
 
         </div>
