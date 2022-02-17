@@ -3,10 +3,11 @@ import SumaryTxt from "./sumary-txt"
 import SkillsOv from "./skills-overview"
 import ExperiencesOverview from "./experiences-overview"
 import EducationsOverview from "./educations-overview"
+import React from "react"
 
-export default function Overview(props) {
+const Overview = React.forwardRef((props,ref) => {
     return(
-        <div className="overview-cont">
+        <div className="overview-cont" ref={ref}>
             <div id="overview-header">
                 <p id="overview-name-text">{props.personalInfo.firstName} {props.personalInfo.lastName}</p>
                 <p id="overview-title-text">{props.personalInfo.title}</p>
@@ -44,4 +45,6 @@ export default function Overview(props) {
             </div>
         </div>
     )
-}
+});
+
+export default Overview;

@@ -1,14 +1,16 @@
 import Menu from "./menu-overview/menu/menu"
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Overview from "./menu-overview/overview/overview"
 import uniqid from "uniqid";
-
+import { useReactToPrint } from "react-to-print";
 export const MyContext = React.createContext();
 
 export default function Main() {
 
 
     //States.
+    const componentRef = useRef(null);
+    const handlePrint = useReactToPrint({ content: () => componentRef.current});
     const [personalInfo,setPersonalInfo] = useState([{   firstName:"",
                                                         lastName:"",
                                                         title:"",
@@ -105,14 +107,17 @@ export default function Main() {
                     handleAddExperienceButton = {handleAddExperienceButton}
                     handleAddEducationButton = {handleAddEducationButton}
                     handleResetButton = {handleResetButton}
+                    handlePrintButton = {handlePrint}
                     />
             </MyContext.Provider>
-
+            
             <MyContext.Provider value={{skills,
                                         experiences,
                                         educations,
-                                        }}>                       
-            <Overview personalInfo = {personalInfo} />
+                                        }}>
+            <div className="overview-wrapper-cont">
+            <Overview ref={componentRef} personalInfo = {personalInfo} />
+            </div>
             </MyContext.Provider>
 
         </div>

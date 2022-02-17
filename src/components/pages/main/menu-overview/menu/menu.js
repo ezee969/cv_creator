@@ -29,7 +29,7 @@ export default function Menu(props) {
             <EducationInformationMenu />
             <Button onClick={props.handleAddEducationButton} name="delete-add-btn" text="Add" />
 
-            <Button name="generate-pdf-btn" text="Generate PDF" />
+            <Button onClick={props.handlePrintButton} name="generate-pdf-btn" text="Generate PDF" />
 
             <Button onClick={props.handleResetButton} name="reset-btn" text="Reset" />
             

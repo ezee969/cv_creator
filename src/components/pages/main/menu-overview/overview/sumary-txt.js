@@ -1,6 +1,6 @@
 export default function SumaryTxt(props) {
 
     return(
-        <p id="sumary-txt">{props.txt}</p>
+        <p className="info-txt" id="sumary-txt">{props.txt}</p>
     )
 }
