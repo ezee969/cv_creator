@@ -156,7 +156,9 @@ button:active{
 
 /* ----------overview---------- */
 .overview-wrapper-cont{
-    max-width: 45%;
+    display: flex;
+    max-width: 100%;
+    flex-grow:  0.7;
 }
 
 .overview-cont{
